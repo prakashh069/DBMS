@@ -1,0 +1,85 @@
+CREATE TABLE company1 (
+    id INT,
+    name VARCHAR NOT NULL,
+    age INT NOT NULL,
+    address VARCHAR(50),
+    salary NUMERIC
+);
+
+INSERT INTO company1 (id, name, age, address, salary)
+VALUES
+    (1, NULL, 25, '123 Main St', 50000),
+    (2, 'John Doe', NULL, '456 Oak St', 60000),
+    (3, 'Jane Smith', 30, NULL, 70000),
+    (4, NULL, NULL, '789 Elm St', 80000);
+	
+DROP TABLE company1;
+
+CREATE TABLE company3 (
+    id INT NOT NULL,
+    name VARCHAR NOT NULL,
+    age INT UNIQUE,
+    address VARCHAR(50),
+    salary NUMERIC
+);
+
+INSERT INTO company3 (id, name, age, address, salary)
+VALUES
+    (1, 'John Doe', 25, '123 Main St', 50000),
+    (2, 'Jane Smith', 25, '456 Oak St', 60000);
+
+CREATE TABLE company4 (
+    id INT PRIMARY KEY,
+    name VARCHAR,
+    age INT,
+    address VARCHAR(50),
+    salary NUMERIC
+);
+
+INSERT INTO company4 (id, name, age, address, salary)
+VALUES
+    (1, 'John Doe', 25, '123 Main St', 50000),
+    (1, 'Jane Smith', 30, '456 Oak St', 60000);
+
+DROP table company4;
+
+CREATE TABLE employee (
+    id INT PRIMARY KEY,
+    name VARCHAR,
+    age INT,
+    address VARCHAR(50),
+    salary NUMERIC
+);
+
+CREATE TABLE department (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    emp_id INT REFERENCES employee(id) ON DELETE CASCADE
+);
+
+INSERT INTO employee (id, name, age, address, salary)
+VALUES
+    (1, 'Employee 1', 25, '123 Main St', 50000),
+    (2, 'Employee 2', 30, '456 Oak St', 60000);
+
+truncate table employee,department;
+
+INSERT INTO department (id, name, emp_id)
+VALUES
+    (1, 'Department A',3);
+
+
+DELETE FROM employee WHERE id = 1;
+SELECT * from employee;
+
+CREATE TABLE company5 (
+    id INT,
+    name TEXT,
+    age INT,
+    address VARCHAR(50),
+    salary REAL CHECK (salary > 0)
+);
+
+INSERT INTO company5 (id, name, age, address, salary)
+VALUES
+    (1, 'John Doe', 25, '123 Main St', -5000);

@@ -1,0 +1,47 @@
+create table client_master(
+	Client_no varchar(6),
+	Client_name varchar(6),
+	Address varchar(30),
+	City varchar(15),
+	Pincode numeric(8),
+	Client_state varchar(15),
+	Due_bal numeric(10,2));
+select * from client_master;
+drop table client_master;
+insert into client_master values('C001','SAM','KOTHRUD','PUNE', 411077,'MAHARASHTRA',10000.23);
+insert into client_master values('C002','JOHN', 'KURLA', 'MUMBAI',400087, 'MAHARASHTRA', 50000.55 );
+insert into client_master values('C003', 'JACK', 'KRISHNA NAGAR', 'GANDHINAGAR', 400044, 'GUJRAT', 25000.93);
+insert into client_master values('C004', 'ANN', 'CHARMINAR', 'HYDRABAD', 400090, 'ANDHRA PRADESH', 77000.00);
+insert into client_master values('C005', 'PITER', 'BANDRA', 'MUMBAI', 400045, 'MAHARASHTRA', 88000.23);
+insert into client_master values('C006', 'NICK', 'VASAI', 'MUMBAI', 400077, 'MAHARASHTRA', 10000.23);
+create table Product_master(
+product_no varchar(6),
+description varchar(15),
+Profit_percent numeric (4,2),
+Unit_measure varchar (10),
+Qty_on_hand varchar (8),
+Reorder_level numeric (8),
+Sell_price numeric (8,2),
+Cost_price numeric (8,2));
+select * from Product_master;
+drop table Product_master;
+insert into Product_master values('p1','Laptop', 30.12, 'Low', 1200, 13000, 60000.23, 50000.34 );
+insert into Product_master values('p2','Refrigerator', 30.92, 'Medium', 4354, 42255, 42423.24, 35000.55 );
+insert into Product_master values('p3','Hard disk', 10.00, 'High', 5678, 8723, 3500.00, 2500.00 );
+insert into Product_master values('p4','Mixture', 40.12, 'Low', 2535, 44000, 10000.23, 8000.34 );
+insert into Product_master values('p5','Washing machine', 35.12, 'High', 9000, 90000, 40000.99, 28000.90 );
+select client_name from client_master;
+select * from client_master;
+select Client_name from client_master;
+select description from Product_master;
+select Client_name from client_master where City='MUMBAI';
+update client_master set City='MUMBAI' where Client_no='C001';
+update client_master set Due_bal=10000 where Client_no='C005';
+update Product_master set Cost_price=3000 where description='Harddisk';
+delete from Product_master where Qty_on_hand<'100';
+delete from client_master where Client_state='ANDHRA PRADESH';
+
+
+
+
+
